@@ -18,7 +18,7 @@ data class ProduitBean(
 
 @Repository
 interface ProduitRepository : JpaRepository<ProduitBean, Long> {
-    //fun findAll() : List<produitBean>
+//    fun findAllProduct() : List<ProduitBean>
 }
 
 @Service
@@ -37,8 +37,9 @@ class ProduitService(var produitRepository: ProduitRepository) {
 //
 //        return teacher
 //    }
-
-    fun getAll() = produitRepository.findAll()
+        //Retourne la liste
+        fun load() = produitRepository.findAll()
+//    fun getProductList() = produitRepository.findAllProduct()
     //fun getByName(name:String) = teacherRepository.findByNameEquals(name)
 
 }
