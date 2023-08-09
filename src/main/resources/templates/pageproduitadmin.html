@@ -27,7 +27,7 @@
 <!-- Start your project here-->
 <div class="container py-5">
   <h5 class="font-weight-bold mb-3 text-center text-lg-start">Produits</h5>
-  <form method="post" action="/enregistrer" class="needs-validation" novalidate>
+  <form method="get" action="/APIproduit/add" class="needs-validation" novalidate>
     <ul class="list-unstyled mb-0">
       <li class="p-2 border-bottom" th:each="product : ${productList}">
         <div class="d-flex flex-row align-items-center">
@@ -40,28 +40,30 @@
                  th:src="${product.photo}" width="60">
           </div>
           <div class="form-group mb-2">
-            <label for="nombre">Nombre</label>
-            <input type="number" class="form-control" id="nombre" name="nombre" required>
+            <button class="btn btn-primary mt-3">Activer</button>
+            <button class="btn btn-primary mt-3">Désactiver</button>
+            <button class="btn btn-primary mt-3">Supprimer</button>
           </div>
         </div>
       </li>
     </ul>
+    <h2>Ajouter un produit</h2>
     <div class="form-group mb-2">
-      <label for="telephone">Numéro de téléphone</label>
-      <input type="tel" class="form-control" id="telephone" name="telephone" required>
+      <label for="nom_prod">Nom du produit</label>
+      <input type="text" class="form-control" id="nom_prod" name="nom_prod" required>
     </div>
     <div class="form-group mb-2">
-      <label for="nom">Nom</label>
-      <input type="text" class="form-control" id="nom" name="nom" required>
+      <label for="visible">Visibilité</label>
+      <input type="text" class="form-control" id="visible" name="visible" required>
     </div>
     <div class="form-group mb-2">
-      <label for="jour_recuperation">Jour de récupération</label>
-      <input type="date" class="form-control" id="jour_recuperation" name="jour_recuperation" required>
+      <label for="photo">Photo</label>
+      <input type="text" class="form-control" id="photo" name="photo" required>
     </div>
     <div class="form-group mb-2">
       <p th:text="${errorMessage}"></p>
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Enregistrer</button>
+    <button type="submit" class="btn btn-primary mt-3">Ajouter le produit</button>
   </form>
 </div>
 <!-- End your project here-->

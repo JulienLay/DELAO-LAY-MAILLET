@@ -42,4 +42,20 @@ class ProduitService(var produitRepository: ProduitRepository) {
 //    fun getProductList() = produitRepository.findAllProduct()
     //fun getByName(name:String) = teacherRepository.findByNameEquals(name)
 
+    fun getAll() = produitRepository.findAll()
+
+    fun createProduit(nom_prod:String?, visible: Boolean?, photo: String?) : ProduitBean {
+        if(nom_prod.isNullOrBlank()){
+            throw Exception("nom_prod manquant")
+        }
+        else if(photo.isNullOrBlank()){
+            throw Exception("photo manquant")
+        }
+        val produit = ProduitBean(null, nom_prod, visible, photo)
+
+        produitRepository.save(produit)
+
+        return produit
+    }
+
 }

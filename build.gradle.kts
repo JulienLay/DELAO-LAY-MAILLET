@@ -35,6 +35,18 @@ dependencies {
 
     //Le validator hibernate
     implementation("org.springframework.boot:spring-boot-starter-validation")
+
+    developmentOnly("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.+")
+
+    //Permet à JAVA de se connecter à une base SQL
+    //runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly("com.mysql:mysql-connector-j")
+
+    //JPA Framework Java qui génère du SQL
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    //Le validator hibernate
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
 tasks.withType<KotlinCompile> {

@@ -16,4 +16,10 @@ class BDDversAPIController(val produitService: ProduitService) {
         println("/getAllProducts")
         return produitService.load()
     }
+
+    @GetMapping("/add")
+    fun addProduct(nom_prod: String?, visible: Boolean, photo: String?): List<ProduitBean> {
+        produitService.createProduit(nom_prod, visible, photo)
+        return produitService.getAll()
+    }
 }
