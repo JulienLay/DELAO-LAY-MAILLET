@@ -47,6 +47,9 @@ dependencies {
 
     //Le validator hibernate
     implementation("org.springframework.boot:spring-boot-starter-validation")
+
+    // OKHTTP et session
+    implementation("com.squareup.okhttp3:okhttp-urlconnection:+")
 }
 
 tasks.withType<KotlinCompile> {

@@ -26,7 +26,7 @@
 <!-- Start your project here-->
 <div class="container py-5">
     <h5 class="font-weight-bold mb-3 text-center text-lg-start">Produits</h5>
-    <form method="post" action="/enregistrer" class="needs-validation" novalidate>
+    <form method="get" action="/commande/enregistrer" class="needs-validation" novalidate>
         <ul class="list-unstyled mb-0">
             <li class="p-2 border-bottom" th:each="product : ${productList}" th:if="${product.visible}">
                 <div class="d-flex flex-row align-items-center">
@@ -46,19 +46,19 @@
             </li>
         </ul>
         <div class="form-group mb-2">
-            <label for="telephone">Numéro de téléphone</label>
-            <input type="tel" class="form-control" id="telephone" name="telephone" required>
+            <label for="numero_tel">Numéro de téléphone</label>
+            <input type="tel" class="form-control" id="numero_tel" name="numero_tel" required>
         </div>
         <div class="form-group mb-2">
-            <label for="nom">Nom</label>
-            <input type="text" class="form-control" id="nom" name="nom" required>
+            <label for="nom_com">Nom</label>
+            <input type="text" class="form-control" id="nom_com" name="nom_com" required>
         </div>
         <div class="form-group mb-2">
-            <label for="jour_recuperation">Jour de récupération</label>
-            <input type="date" class="form-control" id="jour_recuperation" name="jour_recuperation" required>
+            <label for="jour_recup">Jour de récupération</label>
+            <input type="date" class="form-control" id="jour_recup" name="jour_recup" required>
         </div>
         <div class="form-group mb-2">
-            <p th:text="${errorMessage}"></p>
+            <p th:text="${message}"></p>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Enregistrer</button>
     </form>
