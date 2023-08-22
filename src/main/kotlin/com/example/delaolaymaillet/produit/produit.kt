@@ -2,9 +2,9 @@ package com.example.delaolaymaillet.produit
 
 import jakarta.persistence.*
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
-import java.util.Optional
 
 @Entity
 @Table(name="produit")
@@ -25,25 +25,7 @@ interface ProduitRepository : JpaRepository<ProduitBean, Long> {
 @Service
 class ProduitService(var produitRepository: ProduitRepository) {
 
-//    fun createTeacher(name:String?, code:Int) : TeacherBean {
-//        if(name.isNullOrBlank()){
-//            throw Exception("Name missing")
-//        }
-//        else if(code !in 1..10){
-//            throw Exception("Code incorrecte")
-//        }
-//        val teacher = TeacherBean(null, name, code)
-//
-//        teacherRepository.save(teacher)
-//
-//        return teacher
-//    }
-
-
-        //Retourne la liste
-        fun load() = produitRepository.findAll()
-//    fun getProductList() = produitRepository.findAllProduct()
-    //fun getByName(name:String) = teacherRepository.findByNameEquals(name)
+    //Retourne la liste
 
     fun getAll() = produitRepository.findAll()
 
@@ -64,14 +46,14 @@ class ProduitService(var produitRepository: ProduitRepository) {
     fun removeProduit(id: Long)  {
         produitRepository.deleteById(id)
     }
-
-    fun deactivate(id: Long) {
-        val produit : Optional<ProduitBean> = produitRepository.findById(id);
-        produit.get().visible.
-// A CONTINUER
+    fun activate(id: Long) {
+        val produit : ProduitBean = produitRepository.findByIdOrNull(id) ?: throw Exception("produit non trouvé :$id")
+        produit.visible = true
+        produitRepository.save(produit)
     }
-
-//    fun deleteProductById(id: Long) {
-//        produitRepository.deleteById(id)
-//    }
+    fun deactivate(id: Long) {
+        val produit : ProduitBean = produitRepository.findByIdOrNull(id) ?: throw Exception("produit non trouvé :$id")
+        produit.visible = false
+        produitRepository.save(produit)
+    }
 }

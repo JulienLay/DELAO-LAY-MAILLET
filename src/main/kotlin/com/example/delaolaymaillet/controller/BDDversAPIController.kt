@@ -18,7 +18,7 @@ class BDDversAPIController(val produitService: ProduitService) {
     @GetMapping("/getAllProducts")
     fun getAllProducts(): List<ProduitBean> {
         println("/getAllProducts")
-        return produitService.load()
+        return produitService.getAll()
     }
 
     //http://localhost:8080/APIproduit/add
@@ -27,21 +27,4 @@ class BDDversAPIController(val produitService: ProduitService) {
         produitService.createProduit(nom_prod, visible, photo)
         return produitService.getAll()
     }
-
-   /* //http://localhost:8080/APIproduit/remove?id=4545
-    @GetMapping("/remove")
-    fun removeProduct(@RequestParam(name = "myId") myId: Long?): List<ProduitBean> {
-        println("/remove $myId")
-        if(myId != null) {
-            produitService.removeProduit(myId)
-        }
-        return produitService.getAll()
-    }*/
-
-    //http://localhost:8080/APIproduit/remove/6
-//    @DeleteMapping("/remove/{id}")
-//    fun removeProduct(id : Long) : List<ProduitBean> {
-//        produitService.deleteProductById(id)
-//        return produitService.getAll()
-//    }
 }
